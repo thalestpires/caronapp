@@ -25,7 +25,6 @@ public class JsonUtil {
 	}
 
 	static class DateDeserializer implements JsonDeserializer<Date> {
-
 		
 		//FIXME: Acertar o parse do date
 		public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {

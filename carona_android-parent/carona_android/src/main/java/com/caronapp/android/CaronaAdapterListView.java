@@ -3,14 +3,17 @@ package com.caronapp.android;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import com.caronapp.model.Carona;
-
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.caronapp.model.Carona;
 
 public class CaronaAdapterListView extends BaseAdapter {
 
@@ -18,7 +21,6 @@ public class CaronaAdapterListView extends BaseAdapter {
 	private List<Carona> caronas;
 
 	public CaronaAdapterListView(Context context, List<Carona> itens) {
-		// Itens da list
 		this.caronas = itens; 
 		mInflater = LayoutInflater.from(context);
 	}
