@@ -11,7 +11,7 @@ public class Carona {
 	private String destino;
 	private Date data;
 	
-	public Carona(long id, String nome, String motoristaFacebookId,
+	public Carona(long id, String motoristaFacebookId,String nome, 
 			String origem, String destino, Date data) {
 		super();
 		this.id = id;
