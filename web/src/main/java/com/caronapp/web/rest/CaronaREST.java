@@ -57,10 +57,13 @@ public class CaronaREST extends AbstractREST {
 	@Produces(JSON_UTF8)
 	public String findMinhasCaronas(@PathParam("meuID") Long userID) {
 		DBCollection collection = DBUtil.getInstance().getDatabase().getCollection(DBUtil.COLLECTION_CARONAS);
-		BasicDBObject query = new BasicDBObject();
-		//TODO fazer query de caronas
-		DBCursor cursor = collection.find(query);
-		return serialize(cursor);
+		
+		BasicDBObject whereQuery = new BasicDBObject();
+		
+		whereQuery.put("motoristaFacebookId", Long.toString(userID));
+		DBCursor cursor = collection.find(whereQuery);
+		
+		return prettySerialize(cursor);
 	}
 	
 
