@@ -1,5 +1,8 @@
 package com.caronapp.web.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -9,12 +12,15 @@ import javax.ws.rs.Produces;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
+import com.caronapp.model.Carona;
 import com.caronapp.web.util.DBUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
+
+import facebook.FacebookHelper;
 
 @Path("/carona")
 public class CaronaREST extends AbstractREST {
@@ -66,5 +72,25 @@ public class CaronaREST extends AbstractREST {
 		return prettySerialize(cursor);
 	}
 	
+	/*@GET
+	@Path("/list/{meuID}")
+	@Produces(JSON_UTF8)
+	public String listCaronas(@PathParam("meuID") String userID) {
+		/*DBCollection collection = DBUtil.getInstance().getDatabase().getCollection(DBUtil.COLLECTION_CARONAS);
+		
+		BasicDBObject whereQuery = new BasicDBObject();
+		
+		whereQuery.put("motoristaFacebookId", Long.toString(userID));
+		DBCursor cursor = collection.find(whereQuery);
+		
+		return prettySerialize(cursor);
+		List<Carona> caronas = new ArrayList<Carona>();
+		
+		caronas = FacebookHelper.getCaronasDisponiveis(userID);
+		
+		return prettySerialize(caronas;
+		
+		
+	}*/
 
 }
