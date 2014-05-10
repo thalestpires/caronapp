@@ -7,4 +7,7 @@
     <string name="hello_world">Hello world!</string>
 
 	<string name="rest_api_url">http://10.10.18.48:8080/carona/rest/carona/1</string>
+	
+	<string name="pegar_carona">Quero Carona</string>
+	<string name="dar_carona">Dou Carona</string>
 </resources>
