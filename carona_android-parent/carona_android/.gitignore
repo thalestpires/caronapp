@@ -30,6 +30,7 @@ local.properties
 .settings/
 .loadpath
 bin/
+gen/
  
 # External tool builders
 .externalToolBuilders/
