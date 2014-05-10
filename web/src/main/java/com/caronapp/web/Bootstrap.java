@@ -55,7 +55,7 @@ public class Bootstrap extends HttpServlet {
 		
 		return query;
 	}
-
+	
 	@Override
 	public void destroy() {
 		

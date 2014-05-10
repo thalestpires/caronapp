@@ -14,23 +14,22 @@ public class CaronaListActivity extends ListActivity {
 
     TextView content;
     
+    List<Carona> caronas;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       
-        List<Carona> caronas = getCaronas();
+
+        new FetchCaronasTask(this).execute();
+   }
+	
+	public void updateCaronas(List<Carona> caronas){
+		this.caronas = caronas;
         
         CaronaAdapterListView adapter = new CaronaAdapterListView(this, caronas);
-
+        
         setListAdapter(adapter); 
-   }
-
-	private List<Carona> getCaronas() {
-		List<Carona> caronas = new ArrayList<Carona>();
-        Carona carona = new Carona(12346l, "Motorista", "FacebookId", "Fundao", "Tijcua", new Date());
-        caronas.add(carona);
-		return caronas;
 	}
 
 }
