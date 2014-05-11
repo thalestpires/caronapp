@@ -42,11 +42,12 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
-        public static final int dar_carona=0x7f050006;
+        public static final int dar_carona=0x7f050007;
         public static final int hello=0x7f050001;
         public static final int hello_world=0x7f050003;
-        public static final int pegar_carona=0x7f050005;
+        public static final int pegar_carona=0x7f050006;
         public static final int rest_api_url=0x7f050004;
+        public static final int rest_api_url_minhas=0x7f050005;
     }
     public static final class style {
         /** 
