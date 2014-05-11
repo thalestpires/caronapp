@@ -7,11 +7,11 @@ import com.mongodb.MongoClient;
 
 public class DBUtil {
 
-	private static String DB_HOST     = "10.10.13.191";
-	private static int DB_PORT        = 27017;
-	private static String DB_USERNAME = "";
-	private static String DB_PASSWORD = "";
-	private static String DB_NAME     = "mydb";
+	private static String DB_HOST     = "ds029257.mongolab.com";
+	private static int DB_PORT        = 29257;
+	private static String DB_USERNAME = "caronapp";
+	private static String DB_PASSWORD = "caronapp";
+	private static String DB_NAME     = "caronapp";
 	
 	public static final String COLLECTION_CARONAS = "caronas";
 
