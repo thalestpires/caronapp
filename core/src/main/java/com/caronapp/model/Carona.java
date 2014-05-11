@@ -11,6 +11,32 @@ public class Carona {
 	private String destino;
 	private Date data;
 	
+	public Carona(){}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setMotoristaFacebookId(String motoristaFacebookId) {
+		this.motoristaFacebookId = motoristaFacebookId;
+	}
+
+	public void setOrigem(String origem) {
+		this.origem = origem;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	public Carona(long id, String motoristaFacebookId,String nome, 
 			String origem, String destino, Date data) {
 		super();
@@ -40,11 +66,13 @@ public class Carona {
 	public Date getData() {
 		return data;
 	}
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Carona [id=" + id + ", nome=" + nome + ", motoristaFacebookId="
+				+ motoristaFacebookId + ", origem=" + origem + ", destino="
+				+ destino + ", data=" + data + "]";
+	}
+
+	
 }
