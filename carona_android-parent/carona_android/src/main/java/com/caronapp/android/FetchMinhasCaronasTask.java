@@ -34,7 +34,7 @@ public class FetchMinhasCaronasTask extends AsyncTask<String, String, String> {
 
 		@Override
 		protected String doInBackground(String... uri) {
-			String url = minhasCaronasListActivity.getString(R.string.rest_api_url_minhas) + "1438778691";
+			String url = minhasCaronasListActivity.getString(R.string.rest_api_url_minhas) + "100000023518026";
 			return HttpUtil.doGET(url);
 		}
 
