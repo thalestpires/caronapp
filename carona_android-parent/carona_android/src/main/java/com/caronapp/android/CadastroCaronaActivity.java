@@ -4,7 +4,6 @@ import java.util.Date;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,7 +15,7 @@ import com.caronapp.model.Carona;
 
 public class CadastroCaronaActivity extends Activity implements OnClickListener {
 
-	private Carona carona = new Carona();
+	public Carona carona = new Carona();
 	
 	private TextView origem;
 	private TextView destino;
