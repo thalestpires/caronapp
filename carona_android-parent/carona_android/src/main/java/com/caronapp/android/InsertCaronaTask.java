@@ -14,7 +14,7 @@ public class InsertCaronaTask extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPreExecute() {
-		
+
 	}
 	protected InsertCaronaTask(CadastroCaronaActivity cadastroCaronaActivity) {
 		this.cadastroCaronaActivity = cadastroCaronaActivity;
@@ -23,29 +23,29 @@ public class InsertCaronaTask extends AsyncTask<String, String, String> {
 	@Override
 	protected String doInBackground(String... uri) {
 		String url = cadastroCaronaActivity.getString(R.string.rest_api_url);
-		
-	   JSONStringer vm = null;
-	   
-	         try {
-				vm = new JSONStringer().object()
-				.key("nome")
-				.value(cadastroCaronaActivity.carona.getNome())
-				.key("motoristaFacebookId")
-				.value(cadastroCaronaActivity.carona.getMotoristaFacebookId())
-				.key("origem")
-				.value(cadastroCaronaActivity.carona.getOrigem())
-				.key("destino")
-				.value(cadastroCaronaActivity.carona.getDestino())
-				.key("data")
-				.value(cadastroCaronaActivity.carona.getData().toString())
-				.endObject();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	
+
+		JSONStringer vm = null;
+
+		try {
+			vm = new JSONStringer().object()
+					.key("nome")
+					.value(cadastroCaronaActivity.carona.getNome())
+					.key("motoristaFacebookId")
+					.value(cadastroCaronaActivity.carona.getMotoristaFacebookId())
+					.key("origem")
+					.value(cadastroCaronaActivity.carona.getOrigem())
+					.key("destino")
+					.value(cadastroCaronaActivity.carona.getDestino())
+					.key("data")
+					.value(cadastroCaronaActivity.carona.getData().toString())
+					.endObject();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return HttpUtil.doPOST(url, vm.toString());
-		
+
 	}
 
 	@Override

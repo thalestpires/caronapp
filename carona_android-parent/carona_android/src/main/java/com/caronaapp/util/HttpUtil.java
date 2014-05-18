@@ -29,29 +29,29 @@ public class HttpUtil {
 
 	public static String doPOST(String url, String json) {
 
-			String resposta = null;
-			StringEntity entity;
-			try {
-				entity = new StringEntity(json);
-				HttpPost request = new HttpPost(url);
-				 request.setHeader("Accept", "application/json");
-				 request.setHeader("Content-type", "application/json");
-				  request.setEntity(entity);
-				  HttpClient httpClient = new DefaultHttpClient();
-				  HttpResponse response = httpClient.execute(request);
-				  Log.i("POST", response.toString());
-				  resposta = response.toString();
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}		
-			return resposta;
+		String resposta = null;
+		StringEntity entity;
+		try {
+			entity = new StringEntity(json);
+			HttpPost request = new HttpPost(url);
+			request.setHeader("Accept", "application/json");
+			request.setHeader("Content-type", "application/json");
+			request.setEntity(entity);
+			HttpClient httpClient = new DefaultHttpClient();
+			HttpResponse response = httpClient.execute(request);
+			Log.i("POST", response.toString());
+			resposta = response.toString();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return resposta;
 
 	}
 }

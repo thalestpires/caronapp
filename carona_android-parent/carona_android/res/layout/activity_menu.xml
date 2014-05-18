@@ -3,17 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFFFF"
+    android:gravity="center"
     android:orientation="vertical" >
 
     <Button
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="@string/dar_carona"
-     android:onClick="darCarona" />
-    
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/mybutton"
+        android:onClick="darCarona"
+        android:text="@string/dar_carona"
+        android:textSize="18sp"
+        android:textStyle="italic" 
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
     <Button
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:text="@string/pegar_carona"
-     android:onClick="pegarCarona" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/mybutton"
+        android:onClick="pegarCarona"
+        android:text="@string/pegar_carona"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
 </LinearLayout>
