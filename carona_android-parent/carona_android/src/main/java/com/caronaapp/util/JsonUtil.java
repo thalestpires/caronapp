@@ -1,11 +1,8 @@
 package com.caronaapp.util;
 
 import java.lang.reflect.Type;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

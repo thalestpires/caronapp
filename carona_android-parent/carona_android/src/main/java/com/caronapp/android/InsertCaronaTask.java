@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONStringer;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.caronaapp.util.HttpUtil;
 
@@ -49,6 +50,6 @@ public class InsertCaronaTask extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		
+		Log.i("PostExecute", result);
 	}
 }

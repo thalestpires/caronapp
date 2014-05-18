@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.caronaapp.util.UserFacebookSession;
 import com.caronapp.model.Carona;
@@ -42,9 +41,10 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener 
 		if (v.equals(cadastrarButton)) {
 			carona.setOrigem(origem.getText().toString());
 			carona.setDestino(destino.getText().toString());
-			Toast.makeText(this, carona.toString(), Toast.LENGTH_SHORT).show();
+			new InsertCaronaTask(this).execute();
+			//Toast.makeText(this, carona.toString(), Toast.LENGTH_SHORT).show();
 		}
 	}
-
+    
 }
 
