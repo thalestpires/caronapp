@@ -1,8 +1,5 @@
 package com.caronapp.web.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,15 +9,12 @@ import javax.ws.rs.Produces;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
-import com.caronapp.model.Carona;
 import com.caronapp.web.util.DBUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
-
-import facebook.FacebookHelper;
 
 @Path("/carona")
 public class CaronaREST extends AbstractREST {

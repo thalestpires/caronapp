@@ -1,4 +1,4 @@
-package facebook;
+package com.caronapp.web.facebook;
 
 import java.util.ArrayList;
 import java.util.List;

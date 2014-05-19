@@ -14,7 +14,7 @@ public class MenuActivity extends Activity {
     }
     
     public void darCarona(View v){
-    	Intent intent = new Intent(getApplicationContext(), CaronaListActivity.class);
+    	Intent intent = new Intent(getApplicationContext(), MinhasCaronasListActivity.class);
         startActivity(intent);
     }
     

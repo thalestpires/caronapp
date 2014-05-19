@@ -25,12 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="CadastroCaronaActivity" >
-        </activity>
-        
-        <activity android:name="CaronaListActivity" >
-        </activity>
+        <activity android:name="CaronaListActivity"></activity>
+        <activity android:name="MinhasCaronasListActivity"></activity>
+        <activity android:name="CadastroCaronaActivity"></activity>
     </application>
 
 </manifest>
