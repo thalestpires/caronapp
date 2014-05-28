@@ -15,36 +15,36 @@ import com.caronapp.model.Carona;
 
 public class CaronaListActivity extends ListActivity {
 
-    TextView content;
-    
-    List<Carona> caronas;
-    
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	TextView content;
 
-        new FetchCaronasTask(this).execute();
-   }
-	
+	List<Carona> caronas;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		new FetchCaronasTask(this).execute();
+	}
+
 	public void updateCaronas(List<Carona> caronas){
 		this.caronas = caronas;
-        
-        CaronaAdapterListView adapter = new CaronaAdapterListView(this, caronas);
-        setListAdapter(adapter); 
-        
-        this.getListView().setLongClickable(true);
-        this.getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
-            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
 
-        		startActivity(new Intent(Intent.ACTION_VIEW, 
-        								Uri.parse("fb://messaging/" + getCaronas().get(position).getMotoristaFacebookId() )));
-                
-                return true;
-            }
-        });
+		CaronaAdapterListView adapter = new CaronaAdapterListView(this, caronas);
+		setListAdapter(adapter); 
+
+		this.getListView().setLongClickable(true);
+		this.getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
+			public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+
+				startActivity(new Intent(Intent.ACTION_VIEW, 
+						Uri.parse("fb://messaging/" + getCaronas().get(position).getMotoristaFacebookId() )));
+
+				return true;
+			}
+		});
 	}
-	
+
 	public List<Carona> getCaronas(){
 		return caronas;
 	}
