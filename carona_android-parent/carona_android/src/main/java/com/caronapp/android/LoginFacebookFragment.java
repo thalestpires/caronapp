@@ -12,6 +12,6 @@ public class LoginFacebookFragment extends Fragment{
 			ViewGroup container, 
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.activity_menu, container, false);
-		return view;	}
-
+		return view;	
+	}
 }
