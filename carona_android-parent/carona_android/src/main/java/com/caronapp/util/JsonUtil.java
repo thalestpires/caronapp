@@ -1,4 +1,4 @@
-package com.caronaapp.util;
+package com.caronapp.util;
 
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;

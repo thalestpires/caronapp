@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.caronaapp.util.UserFacebookSession;
 import com.caronapp.model.Carona;
+import com.caronapp.util.UserFacebookSession;
 
 public class CadastroCaronaActivity extends Activity implements OnClickListener {
 

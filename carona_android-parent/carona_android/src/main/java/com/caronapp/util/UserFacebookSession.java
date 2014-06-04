@@ -1,4 +1,4 @@
-package com.caronaapp.util;
+package com.caronapp.util;
 
 public class UserFacebookSession {
 	

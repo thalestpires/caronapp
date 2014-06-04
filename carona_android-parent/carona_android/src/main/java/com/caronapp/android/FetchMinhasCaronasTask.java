@@ -6,9 +6,9 @@ import java.util.List;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.caronaapp.util.HttpUtil;
-import com.caronaapp.util.JsonUtil;
 import com.caronapp.model.Carona;
+import com.caronapp.util.HttpUtil;
+import com.caronapp.util.JsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

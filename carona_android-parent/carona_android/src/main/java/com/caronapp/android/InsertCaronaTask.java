@@ -6,7 +6,7 @@ import org.json.JSONStringer;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.caronaapp.util.HttpUtil;
+import com.caronapp.util.HttpUtil;
 
 public class InsertCaronaTask extends AsyncTask<String, String, String> {
 
