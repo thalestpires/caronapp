@@ -29,6 +29,8 @@ local.properties
 .classpath
 .settings/
 .loadpath
+
+facebook/bin/**
  
 # External tool builders
 .externalToolBuilders/

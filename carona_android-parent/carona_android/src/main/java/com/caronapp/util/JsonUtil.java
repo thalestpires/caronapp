@@ -1,10 +1,8 @@
 package com.caronapp.util;
 
 import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
