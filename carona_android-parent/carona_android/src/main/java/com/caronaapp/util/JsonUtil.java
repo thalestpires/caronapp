@@ -1,8 +1,10 @@
 package com.caronaapp.util;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,19 +27,14 @@ public class JsonUtil {
 		
 		//FIXME: Acertar o parse do date
 		public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-
-			//			String date = json.getAsJsonObject().get("$date").toString();
-//
-//			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-//			formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-//
-//			try {
-//				return formatter.parse(date);
-//			} catch (ParseException e) {
-//				return null;
-//			}
 			
-			return Calendar.getInstance().getTime();
+			String date = json.toString();
+			long milliSeconds= Long.parseLong(date);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTimeInMillis(milliSeconds);
+			
+			return calendar.getTime();	
+			
 		}
 
 

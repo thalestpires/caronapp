@@ -37,7 +37,7 @@ public class InsertCaronaTask extends AsyncTask<String, String, String> {
 					.key("destino")
 					.value(cadastroCaronaActivity.carona.getDestino())
 					.key("data")
-					.value(cadastroCaronaActivity.carona.getData().toString())
+					.value(cadastroCaronaActivity.carona.getData().getTime())
 					.endObject();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

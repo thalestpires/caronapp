@@ -5,6 +5,7 @@
     android:stretchColumns="0,1,2" >
 
     <TableRow>
+
         <TextView
             android:id="@+id/origem"
             android:layout_width="wrap_content"
@@ -22,6 +23,7 @@
     </TableRow>
 
     <TableRow>
+
         <TextView
             android:id="@+id/destino"
             android:layout_width="wrap_content"
@@ -34,37 +36,65 @@
             android:layout_height="wrap_content"
             android:ems="10" />
     </TableRow>
-    
-    <TableRow>
 
-        <Button
-            android:id="@+id/btnData"
+
+<!-- Date Picker e Time Picker -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/txtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Data" />
+            android:layout_weight="1" >
+
+            <requestFocus>
+            </requestFocus>
+        </EditText>
 
         <Button
-            android:id="@+id/btnHora"
+            android:id="@+id/btnCalendar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Calendar" >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/txtTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hora" />
-        
-        <Button 
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
-    android:text="@string/pick_time" 
-    android:onClick="showTimePickerDialog" />
+            android:layout_weight="1" >
 
-    </TableRow>
+            <requestFocus>
+            </requestFocus>
+        </EditText>
 
+        <Button
+            android:id="@+id/btnTimePicker"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Time Picker" >
+        </Button>
+    </LinearLayout>
     <TableRow>
+
         <Button
             android:id="@+id/ok"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadastrar" 
-            android:background="@drawable/mybutton"/>
+            android:text="Cadastrar" />
     </TableRow>
-
+    
 </TableLayout>

@@ -13,8 +13,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 class FetchCaronasTask extends AsyncTask<String, String, String> {
-	
-	private static final Type caronasListType = new TypeToken<List<Carona>>(){}.getType();
+
+	private static final Type caronasListType = new TypeToken<List<Carona>>() {
+	}.getType();
 
 	private final Gson gson = JsonUtil.getGson();
 
@@ -28,7 +29,7 @@ class FetchCaronasTask extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPreExecute() {
-		
+
 	}
 
 	@Override
@@ -39,10 +40,9 @@ class FetchCaronasTask extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-	
+
 		List<Carona> caronas = gson.fromJson(result, caronasListType);
-		
+
 		caronaListActivity.updateCaronas(caronas);
 	}
 }
-

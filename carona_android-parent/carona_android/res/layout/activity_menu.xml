@@ -28,5 +28,14 @@
         android:text="@string/pegar_carona"
         android:textSize="18sp"
         android:textStyle="italic" />
+    
+        <com.facebook.widget.LoginButton
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/authButton"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp" />
 
 </LinearLayout>

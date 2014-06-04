@@ -23,7 +23,6 @@ public class CaronaListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		new FetchCaronasTask(this).execute();
 	}
 

@@ -13,6 +13,7 @@
 	<packaging>apk</packaging>
 	<name>Carona App - Android Application</name>
 
+
 	<dependencies>
 		<dependency>
 			<groupId>org.json</groupId>
@@ -35,7 +36,6 @@
 			<artifactId>gson</artifactId>
 			<version>2.2.4</version>
 		</dependency>
-
 
 	</dependencies>
 	<build>
