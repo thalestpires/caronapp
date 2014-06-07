@@ -70,7 +70,7 @@ public class CaronaREST extends AbstractREST {
 		BasicDBObject whereQuery = new BasicDBObject();
 		
 		whereQuery.put("motoristaFacebookId", Long.toString(userID));
-		DBCursor cursor = collection.find(whereQuery);
+		DBCursor cursor = collection.find(whereQuery).sort(new BasicDBObject("data", -1));
 		
 		return prettySerialize(cursor);
 	}
