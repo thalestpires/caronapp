@@ -1,4 +1,4 @@
-package com.caronapp.android;
+	package com.caronapp.android;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -9,6 +9,9 @@ import android.os.AsyncTask;
 import com.caronapp.model.Carona;
 import com.caronapp.util.HttpUtil;
 import com.caronapp.util.JsonUtil;
+import com.caronapp.util.UserFacebookSession;
+import com.facebook.Request;
+import com.facebook.Session;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -21,7 +24,6 @@ public class FetchMinhasCaronasTask extends AsyncTask<String, String, String> {
 		private final MinhasCaronasListActivity minhasCaronasListActivity;
 		private final Context mContext;
 
-
 		protected FetchMinhasCaronasTask(MinhasCaronasListActivity minhasCaronasActivity) {
 			this.minhasCaronasListActivity = minhasCaronasActivity;
 			this.mContext = minhasCaronasActivity;
@@ -29,18 +31,16 @@ public class FetchMinhasCaronasTask extends AsyncTask<String, String, String> {
 
 		@Override
 		protected void onPreExecute() {
-			
 		}
 
 		@Override
 		protected String doInBackground(String... uri) {
-			String url = minhasCaronasListActivity.getString(R.string.rest_api_url_minhas) + "100000023518026";
+			String url = minhasCaronasListActivity.getString(R.string.rest_api_url_minhas) + UserFacebookSession.USER_ID;
 			return HttpUtil.doGET(url);
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-		
 			List<Carona> caronas = gson.fromJson(result, caronasListType);
 			
 			minhasCaronasListActivity.updateCaronas(caronas);

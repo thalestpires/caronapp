@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.caronapp.model.Carona;
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class MinhasCaronasListActivity extends ListActivity {
 
@@ -67,4 +68,16 @@ public class MinhasCaronasListActivity extends ListActivity {
 
 	    return true;
 	  } 
+	
+	@Override
+    protected void onStop() {
+    	super.onStop();
+    	EasyTracker.getInstance(this).activityStop(this);
+    }
+    
+    @Override
+    protected void onStart() {
+    	EasyTracker.getInstance(this).activityStart(this);
+    	super.onStart();
+    }
 }

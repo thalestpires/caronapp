@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.caronapp.model.Carona;
 import com.caronapp.util.UserFacebookSession;
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class CadastroCaronaActivity extends Activity implements OnClickListener {
 
@@ -47,7 +48,7 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener 
 		cadastrarButton.setOnClickListener(this);
 
 		carona.setMotoristaFacebookId(UserFacebookSession.USER_ID);
-		carona.setNome(UserFacebookSession.USER_NOME);
+		carona.setNome(UserFacebookSession.USER_NAME);
 
 		//carona.setData(new Date());
 
@@ -137,6 +138,18 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener 
 			tpd.show();
 		}
 	}
+	
+	@Override
+    protected void onStop() {
+    	super.onStop();
+    	EasyTracker.getInstance(this).activityStop(this);
+    }
+    
+    @Override
+    protected void onStart() {
+    	EasyTracker.getInstance(this).activityStart(this);
+    	super.onStart();
+    }
 
 }
 

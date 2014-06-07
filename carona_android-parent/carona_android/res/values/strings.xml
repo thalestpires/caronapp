@@ -11,4 +11,6 @@
 	<string name="dar_carona">Dou Carona</string>
 	<string name="pick_time">Hora da Carona</string>
 	<string name="app_id">305609839591237</string>
+	<string name="motoristasConhecidos">Apenas motoristas conhecidos?</string>
+	<string name="disponivelBreve">"Disponível em breve"</string>
 </resources>

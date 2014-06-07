@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ga_trackingId">UA-51698772-1</string>
+  <!-- REMOVE: <bool name="ga_debug">true</bool> -->
+  <bool name="ga_logLevel">true</bool>
+  <bool name="ga_autoActivityTracking">true</bool>
+</resources>
