@@ -1,11 +1,21 @@
 package com.caronapp.android;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ListActivity;
+import android.content.ContentProviderOperation;
 import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.RemoteException;
+import android.provider.ContactsContract;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.CommonDataKinds.StructuredName;
+import android.provider.ContactsContract.Contacts.Data;
+import android.provider.ContactsContract.RawContacts;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -24,19 +34,17 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 	TextView content;
 
 	List<Carona> caronas;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		Switch switchFiltraAmigos = (Switch) findViewById(R.id.switchAmigos);
 		switchFiltraAmigos.setOnCheckedChangeListener(this);
-		
+
 		new FetchCaronasTask(this).execute();
 	}
-	
 
 	public void updateCaronas(List<Carona> caronas){
 		this.caronas = caronas;
@@ -47,37 +55,81 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 		this.getListView().setLongClickable(true);
 		this.getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+				adicionarContato("Testador", "21988892139");  
 
-				startActivity(new Intent(Intent.ACTION_VIEW, 
-						Uri.parse("fb://messaging/" + getCaronas().get(position).getMotoristaFacebookId() )));
+				Handler delayHandler= new Handler();
+				Runnable r = new Runnable()
+				{
+					public void run() {
+						Uri uri = Uri.parse("smsto:" + "21988892139");
+						Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+						i.setPackage("com.whatsapp");  
+						startActivity(Intent.createChooser(i, ""));
+					}
+				};
+				
+				delayHandler.postDelayed(r, 5000);
 
 				return true;
 			}
 		});
 	}
 
+	private void adicionarContato(String name, String phoneNumber){
+		ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
+
+		ops.add(ContentProviderOperation.newInsert(RawContacts.CONTENT_URI)
+				.withValue(RawContacts.ACCOUNT_TYPE, null)
+				.withValue(RawContacts.ACCOUNT_NAME, null).build());
+
+		ops.add(ContentProviderOperation
+				.newInsert(ContactsContract.Data.CONTENT_URI)
+				.withValueBackReference(Data.RAW_CONTACT_ID,0)
+				.withValue(Data.MIMETYPE, StructuredName.CONTENT_ITEM_TYPE)
+				.withValue(StructuredName.DISPLAY_NAME, name) // Name of the person
+				.build());
+
+		ops.add(ContentProviderOperation
+				.newInsert(ContactsContract.Data.CONTENT_URI)
+				.withValueBackReference(
+						ContactsContract.Data.RAW_CONTACT_ID,   0)
+						.withValue(Data.MIMETYPE, Phone.CONTENT_ITEM_TYPE)
+						.withValue(Phone.NUMBER, phoneNumber) // Number of the person
+						.withValue(Phone.TYPE, Phone.TYPE_MOBILE).build()); // Type of mobile number                    
+		try
+		{
+			getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+		}
+		catch (RemoteException e)
+		{ 
+		}
+		catch (OperationApplicationException e) 
+		{
+		}   
+	}
+
 	public List<Carona> getCaronas(){
 		return caronas;
 	}
-	
+
 	@Override
-    protected void onStop() {
-    	super.onStop();
-    	EasyTracker.getInstance(this).activityStop(this);
-    }
-    
-    @Override
-    protected void onStart() {
-    	EasyTracker.getInstance(this).activityStart(this);
-    	super.onStart();
-    }
+	protected void onStop() {
+		super.onStop();
+		EasyTracker.getInstance(this).activityStop(this);
+	}
+
+	@Override
+	protected void onStart() {
+		EasyTracker.getInstance(this).activityStart(this);
+		super.onStart();
+	}
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		if (isChecked) {
 			EasyTracker.getInstance(this).send(
-				MapBuilder.createEvent("fake_feature", "only_friends", null, null).build()
-			);
+					MapBuilder.createEvent("fake_feature", "only_friends", null, null).build()
+					);
 			Toast.makeText(this, R.string.disponivelBreve, Toast.LENGTH_SHORT).show();
 		}
-		
+
 	}
 }

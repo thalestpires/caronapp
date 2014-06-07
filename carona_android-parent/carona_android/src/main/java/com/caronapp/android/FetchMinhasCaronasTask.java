@@ -3,15 +3,12 @@
 import java.lang.reflect.Type;
 import java.util.List;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.caronapp.model.Carona;
 import com.caronapp.util.HttpUtil;
 import com.caronapp.util.JsonUtil;
 import com.caronapp.util.UserFacebookSession;
-import com.facebook.Request;
-import com.facebook.Session;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -22,11 +19,9 @@ public class FetchMinhasCaronasTask extends AsyncTask<String, String, String> {
 		private final Gson gson = JsonUtil.getGson();
 
 		private final MinhasCaronasListActivity minhasCaronasListActivity;
-		private final Context mContext;
 
 		protected FetchMinhasCaronasTask(MinhasCaronasListActivity minhasCaronasActivity) {
 			this.minhasCaronasListActivity = minhasCaronasActivity;
-			this.mContext = minhasCaronasActivity;
 		}
 
 		@Override
