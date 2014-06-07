@@ -1,5 +1,6 @@
 package com.caronapp.android;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ListActivity;
@@ -80,4 +81,12 @@ public class MinhasCaronasListActivity extends ListActivity {
     	EasyTracker.getInstance(this).activityStart(this);
     	super.onStart();
     }
+    
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	updateCaronas(new ArrayList<Carona>());
+		new FetchMinhasCaronasTask(this).execute();
+    }
+    
 }

@@ -13,4 +13,6 @@
 	<string name="app_id">305609839591237</string>
 	<string name="motoristasConhecidos">Apenas motoristas conhecidos?</string>
 	<string name="disponivelBreve">"Disponível em breve"</string>
+	<string name="carregando">"Carregando.."</string>
+	<string name="sucesso_cadastro_carona">"Carona cadastrada com sucesso!"</string>
 </resources>

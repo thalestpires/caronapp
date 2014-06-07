@@ -8,7 +8,7 @@ import android.os.AsyncTask;
 import com.caronapp.model.Carona;
 import com.caronapp.util.HttpUtil;
 import com.caronapp.util.JsonUtil;
-import com.caronapp.util.UserFacebookSession;
+import com.caronapp.util.UserSessionData;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,7 +30,7 @@ public class FetchMinhasCaronasTask extends AsyncTask<String, String, String> {
 
 		@Override
 		protected String doInBackground(String... uri) {
-			String url = minhasCaronasListActivity.getString(R.string.rest_api_url_minhas) + UserFacebookSession.USER_ID;
+			String url = minhasCaronasListActivity.getString(R.string.rest_api_url_minhas) + UserSessionData.USER_ID;
 			return HttpUtil.doGET(url);
 		}
 

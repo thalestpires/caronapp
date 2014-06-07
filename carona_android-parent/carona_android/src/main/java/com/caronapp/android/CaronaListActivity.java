@@ -55,24 +55,35 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 		this.getListView().setLongClickable(true);
 		this.getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-				adicionarContato("Testador", "21988892139");  
+				
+				final String nome = getCaronas().get(position).getNome();
+				final String telefone = getCaronas().get(position).getTelefone();
+				
+				adicionarContato(nome, telefone);  
 
 				Handler delayHandler= new Handler();
 				Runnable r = new Runnable()
 				{
 					public void run() {
-						Uri uri = Uri.parse("smsto:" + "21988892139");
+						Uri uri = Uri.parse("smsto:" + telefone);
 						Intent i = new Intent(Intent.ACTION_SENDTO, uri);
 						i.setPackage("com.whatsapp");  
 						startActivity(Intent.createChooser(i, ""));
 					}
 				};
 				
+				showLoadingToast();
+				
 				delayHandler.postDelayed(r, 5000);
 
 				return true;
 			}
 		});
+	}
+
+	protected void showLoadingToast() {
+		Toast.makeText(this, R.string.carregando, Toast.LENGTH_LONG).show();
+		
 	}
 
 	private void adicionarContato(String name, String phoneNumber){

@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
 
-import com.caronapp.util.UserFacebookSession;
+import com.caronapp.util.UserSessionData;
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Request.Callback;
@@ -48,22 +49,36 @@ public class MenuActivity extends FragmentActivity {
 	        .findFragmentById(android.R.id.content);
 	    }
     }
-    
+
     private void onSessionStateChange(Session session, SessionState state, Exception exception) {
         if (state.isOpened()) {
-        	
-        	Bundle params = new Bundle();
-        	params.putString("fields", "id,name");
-        	
-        	Request req = new Request(session, "me", params, HttpMethod.GET, new Callback(){
-        	    public void onCompleted(Response response) {
-        	    	UserFacebookSession.USER_ID = (String) response.getGraphObject().getProperty("id");
-        	    	UserFacebookSession.USER_NAME = (String) response.getGraphObject().getProperty("name"); 
-        	    }
-        	});
-        	req.executeAsync();        	
-        } 
+        	carregaDadosFacebook(session);   
+        	toggleBotoes(true);
+        }
+        else{
+        	UserSessionData.USER_ID = "";
+        	UserSessionData.USER_NAME = "";
+        	toggleBotoes(false);
+        }
     }
+
+    private void toggleBotoes(boolean val){
+    	((Button)findViewById(R.id.pegarCarona)).setEnabled(val);
+    	((Button)findViewById(R.id.darCarona)).setEnabled(val);
+    }
+    
+	private void carregaDadosFacebook(Session session) {
+		Bundle params = new Bundle();
+		params.putString("fields", "id,name");
+		
+		Request req = new Request(session, "me", params, HttpMethod.GET, new Callback(){
+		    public void onCompleted(Response response) {
+		    	UserSessionData.USER_ID = (String) response.getGraphObject().getProperty("id");
+		    	UserSessionData.USER_NAME = (String) response.getGraphObject().getProperty("name"); 
+		    }
+		});
+		req.executeAsync();
+	}
     
     public void darCarona(View v){
     	Intent intent = new Intent(getApplicationContext(), MinhasCaronasListActivity.class);
@@ -79,6 +94,10 @@ public class MenuActivity extends FragmentActivity {
     public void onResume() {
         super.onResume();
         uiHelper.onResume();
+        
+        if (!UserSessionData.USER_NAME.equals("")){
+        	toggleBotoes(true);
+        }
     }
 
     @Override

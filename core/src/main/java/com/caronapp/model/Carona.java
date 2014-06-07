@@ -9,9 +9,22 @@ public class Carona {
 	private String motoristaFacebookId;
 	private String origem;
 	private String destino;
+	private String telefone;
 	private Date data;
 	
 	public Carona(){}
+
+	public Carona(long id, String motoristaFacebookId,String nome, 
+			String origem, String destino, Date data, String telefone) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.motoristaFacebookId = motoristaFacebookId;
+		this.origem = origem;
+		this.destino = destino;
+		this.data = data;
+		this.telefone = telefone;
+	}
 	
 	public void setId(long id) {
 		this.id = id;
@@ -36,17 +49,6 @@ public class Carona {
 	public void setData(Date data) {
 		this.data = data;
 	}
-
-	public Carona(long id, String motoristaFacebookId,String nome, 
-			String origem, String destino, Date data) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.motoristaFacebookId = motoristaFacebookId;
-		this.origem = origem;
-		this.destino = destino;
-		this.data = data;
-	}
 	
 	public long getId() {
 		return id;
@@ -67,12 +69,18 @@ public class Carona {
 		return data;
 	}
 
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	@Override
 	public String toString() {
 		return "Carona [id=" + id + ", nome=" + nome + ", motoristaFacebookId="
 				+ motoristaFacebookId + ", origem=" + origem + ", destino="
 				+ destino + ", data=" + data + "]";
 	}
-
-	
 }

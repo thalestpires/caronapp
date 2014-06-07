@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.caronapp.model.Carona;
+import com.facebook.widget.ProfilePictureView;
 
 public class CaronaAdapterListView extends BaseAdapter {
 
@@ -55,8 +56,10 @@ public class CaronaAdapterListView extends BaseAdapter {
 
 		TextView hora = ((TextView) view.findViewById(R.id.hora));
 		hora.setText(new SimpleDateFormat("hh:mm").format(carona.getData()));
-
-		//retorna a view com as informações 
+		
+		ProfilePictureView photo = (ProfilePictureView) view.findViewById(R.id.fotoProfile);
+		photo.setProfileId(carona.getMotoristaFacebookId());
+		
 		return view; 
 	} 
 }

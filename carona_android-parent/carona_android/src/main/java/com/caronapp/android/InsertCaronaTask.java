@@ -7,17 +7,21 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.caronapp.util.HttpUtil;
+import com.caronapp.util.UserSessionData;
 
 public class InsertCaronaTask extends AsyncTask<String, String, String> {
 
 	private final CadastroCaronaActivity cadastroCaronaActivity;
+	
+    private InsertCaronaCallback mCallback = null;
 
 	@Override
 	protected void onPreExecute() {
 
 	}
-	protected InsertCaronaTask(CadastroCaronaActivity cadastroCaronaActivity) {
+	protected InsertCaronaTask(CadastroCaronaActivity cadastroCaronaActivity, InsertCaronaCallback callback) {
 		this.cadastroCaronaActivity = cadastroCaronaActivity;
+		mCallback = callback;
 	}
 
 	@Override
@@ -38,6 +42,8 @@ public class InsertCaronaTask extends AsyncTask<String, String, String> {
 					.value(cadastroCaronaActivity.carona.getDestino())
 					.key("data")
 					.value(cadastroCaronaActivity.carona.getData().getTime())
+					.key("telefone")
+					.value(cadastroCaronaActivity.carona.getTelefone())
 					.endObject();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -51,5 +57,12 @@ public class InsertCaronaTask extends AsyncTask<String, String, String> {
 	@Override
 	protected void onPostExecute(String result) {
 		Log.i("PostExecute", result);
+		if(mCallback != null){
+			mCallback.onInsertCaronaCallback();
+		}
 	}
+	
+    public interface InsertCaronaCallback {
+        public void onInsertCaronaCallback();
+    }
 }

@@ -16,16 +16,18 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.caronapp.android.InsertCaronaTask.InsertCaronaCallback;
 import com.caronapp.model.Carona;
-import com.caronapp.util.UserFacebookSession;
+import com.caronapp.util.UserSessionData;
 import com.google.analytics.tracking.android.EasyTracker;
 
-public class CadastroCaronaActivity extends Activity implements OnClickListener {
+public class CadastroCaronaActivity extends Activity implements OnClickListener, InsertCaronaCallback {
 
 	public Carona carona = new Carona();
 
 	private TextView origem;
 	private TextView destino;
+	private TextView phone;
 	private Button cadastrarButton;
 
 	// Widget GUI
@@ -42,12 +44,14 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener 
 
 		origem = (TextView)findViewById(R.id.editOrigem);
 		destino = (TextView)findViewById(R.id.editDestino);
+		
+		phone = (TextView)findViewById(R.id.editPhone);
 
 		cadastrarButton = (Button)findViewById(R.id.ok);
 		cadastrarButton.setOnClickListener(this);
 
-		carona.setMotoristaFacebookId(UserFacebookSession.USER_ID);
-		carona.setNome(UserFacebookSession.USER_NAME);
+		carona.setMotoristaFacebookId(UserSessionData.USER_ID);
+		carona.setNome(UserSessionData.USER_NAME);
 
 		//carona.setData(new Date());
 
@@ -67,6 +71,7 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener 
 		if (v.equals(cadastrarButton)) {
 			carona.setOrigem(origem.getText().toString());
 			carona.setDestino(destino.getText().toString());
+			carona.setTelefone(phone.getText().toString());
 
 			if(carona.getOrigem().equals("")){
 				Toast.makeText(this, "Por favor preencha uma origem", Toast.LENGTH_SHORT).show();
@@ -86,7 +91,7 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener 
 				cal.set(Calendar.MINUTE, minutoMarcado);
 				Date dateRepresentation = cal.getTime();
 				carona.setData(dateRepresentation);
-				new InsertCaronaTask(this).execute();				
+				new InsertCaronaTask(this, this).execute();				
 			} 
 		}
 		if (v == btnCalendar) {
@@ -150,5 +155,9 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener 
     	super.onStart();
     }
 
+	public void onInsertCaronaCallback() {
+		this.finish();
+		Toast.makeText(this, R.string.sucesso_cadastro_carona, Toast.LENGTH_SHORT).show();
+	}
 }
 
