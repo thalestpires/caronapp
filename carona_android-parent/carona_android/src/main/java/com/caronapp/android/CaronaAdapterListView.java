@@ -55,7 +55,7 @@ public class CaronaAdapterListView extends BaseAdapter {
 		data.setText(new SimpleDateFormat("dd/MM/yyyy").format(carona.getData()));
 
 		TextView hora = ((TextView) view.findViewById(R.id.hora));
-		hora.setText(new SimpleDateFormat("hh:mm").format(carona.getData()));
+		hora.setText(new SimpleDateFormat("HH:mm").format(carona.getData()));
 		
 		ProfilePictureView photo = (ProfilePictureView) view.findViewById(R.id.fotoProfile);
 		photo.setProfileId(carona.getMotoristaFacebookId());

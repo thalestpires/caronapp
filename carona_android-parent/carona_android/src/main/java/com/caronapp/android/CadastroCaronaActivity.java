@@ -138,7 +138,7 @@ public class CadastroCaronaActivity extends Activity implements OnClickListener,
 					minutoMarcado = minute;
 					txtTime.setText(hourOfDay + ":" + minute);
 				}
-			}, mHour, mMinute, false);
+			}, mHour, mMinute, true);
 			tpd.show();
 		}
 	}
