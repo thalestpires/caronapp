@@ -1,5 +1,7 @@
 package com.caronapp.web.rest;
 
+import java.util.Calendar;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,8 +27,15 @@ public class CaronaREST extends AbstractREST {
 	@Produces(JSON_UTF8)
 	public String findCaronas() throws JSONException {
 		DBCollection collection = DBUtil.getInstance().getDatabase().getCollection(DBUtil.COLLECTION_CARONAS);
-		BasicDBObject query = new BasicDBObject();
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.HOUR, -2);
+		
+		BasicDBObject query = new BasicDBObject("data", 
+							 		new BasicDBObject("$gt", cal.getTime().getTime()));
+		
 		DBCursor cursor = collection.find(query);
+		
+		
 		return prettySerialize(cursor);
 	}
 	
