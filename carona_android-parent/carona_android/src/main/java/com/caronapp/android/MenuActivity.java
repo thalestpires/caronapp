@@ -1,10 +1,12 @@
 package com.caronapp.android;
  
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.caronapp.util.UserSessionData;
 import com.facebook.HttpMethod;
@@ -36,12 +38,12 @@ public class MenuActivity extends FragmentActivity {
         
 	    if (savedInstanceState == null) {
 	        // Add the fragment on initial activity setup
-	    	loginFacebookFragment = new LoginFacebookFragment();
-	        
-	    	getSupportFragmentManager()
-	        .beginTransaction()
-	        .add(android.R.id.content, loginFacebookFragment)
-	        .commit();
+	    	setContentView(R.layout.activity_menu);
+	    	Typeface tf = Typeface.createFromAsset(getAssets(),
+	                "fonts/FertigoPro.otf");
+	        TextView tv = (TextView) findViewById(R.id.fonteFertigo);
+	        tv.setTypeface(tf);
+	    	
 	    	
 	    } else {
 	        // Or set the fragment from restored state info

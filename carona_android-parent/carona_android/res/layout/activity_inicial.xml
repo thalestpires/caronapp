@@ -2,19 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backrepeat"
+    android:background="#FFFFFFFF"
     android:gravity="center"
     android:orientation="vertical" >
-    
-    <TextView android:layout_height="0dp" 
-         android:id="@+id/fonteFertigo"
-         android:layout_weight="1"
-         android:layout_marginTop="-5dp"
-         android:gravity="center" 
-         android:layout_width="match_parent"
-         android:textSize="60sp"
-         android:textColor="#FFFFFF"
-         android:text="Leva eu!" />
 
     <Button
         android:id="@+id/darCarona"
@@ -44,11 +34,11 @@
         android:textStyle="italic" />
     
         <com.facebook.widget.LoginButton
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:id="@+id/authButton"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="75dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp" />
 

@@ -6,14 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class LoginFacebookFragment extends Fragment{
+public class InicialFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, 
 			ViewGroup container, 
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.activity_menu, container, false);		
-
+		View view = inflater.inflate(R.layout.activity_inicial, container, false);
 		return view;	
 	}
-
 }
