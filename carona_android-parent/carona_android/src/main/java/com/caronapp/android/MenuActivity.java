@@ -51,22 +51,38 @@ public class MenuActivity extends FragmentActivity {
 	        .findFragmentById(android.R.id.content);
 	    }
     }
+    
+    private void carregaFontes(){
+    	//Fontes
+    	Typeface tfFertigo = Typeface.createFromAsset(getAssets(),
+                "fonts/FertigoPro.otf");
+    	Typeface tfHellvetica = Typeface.createFromAsset(getAssets(),
+                 "fonts/Helvetica.ttf");
+        TextView tv = (TextView) findViewById(R.id.fonteFertigo);
+        tv.setTypeface(tfFertigo);
+        
+        tv = (TextView) findViewById(R.string.dar_carona);
+        tv.setTypeface(tfHellvetica); 
+        
+        tv = (TextView) findViewById(R.string.pegar_carona);
+        tv.setTypeface(tfHellvetica); 
+    }
 
     private void onSessionStateChange(Session session, SessionState state, Exception exception) {
         if (state.isOpened()) {
         	carregaDadosFacebook(session);   
-        	toggleBotoes(true);
+        	toggleBotoes(View.VISIBLE);
         }
         else{
         	UserSessionData.USER_ID = "";
         	UserSessionData.USER_NAME = "";
-        	toggleBotoes(false);
+        	toggleBotoes(View.INVISIBLE);
         }
     }
 
-    private void toggleBotoes(boolean val){
-    	((Button)findViewById(R.id.pegarCarona)).setEnabled(val);
-    	((Button)findViewById(R.id.darCarona)).setEnabled(val);
+    private void toggleBotoes(int visibility){
+    	((Button)findViewById(R.id.pegarCarona)).setVisibility(visibility);
+    	((Button)findViewById(R.id.darCarona)).setVisibility(visibility);
     }
     
 	private void carregaDadosFacebook(Session session) {
@@ -98,7 +114,7 @@ public class MenuActivity extends FragmentActivity {
         uiHelper.onResume();
         
         if (!UserSessionData.USER_NAME.equals("")){
-        	toggleBotoes(true);
+        	toggleBotoes(View.VISIBLE);
         }
     }
 
