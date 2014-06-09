@@ -18,7 +18,7 @@
 
 	<properties>
 		<platform.version>4.1.1.4</platform.version>
-		<android.plugin.version>3.8.0</android.plugin.version>
+		<android.plugin.version>3.8.1</android.plugin.version>
 	</properties>
 
 	<dependencyManagement>

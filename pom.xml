@@ -10,7 +10,7 @@
 	<modules>
 		<module>core</module>
 		<module>web</module>
-		<!--<module>carona_android-parent</module>-->
+	    <module>carona_android-parent</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
