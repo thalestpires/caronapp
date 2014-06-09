@@ -1,13 +1,14 @@
 package com.caronapp.android;
 
-import org.json.JSONException;
-import org.json.JSONStringer;
+import java.io.StringWriter;
+
+import org.codehaus.jackson.map.ObjectMapper;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.caronapp.model.Carona;
 import com.caronapp.util.HttpUtil;
-import com.caronapp.util.UserSessionData;
 
 public class InsertCaronaTask extends AsyncTask<String, String, String> {
 
@@ -27,31 +28,17 @@ public class InsertCaronaTask extends AsyncTask<String, String, String> {
 	@Override
 	protected String doInBackground(String... uri) {
 		String url = cadastroCaronaActivity.getString(R.string.rest_api_url);
+		Carona carona = cadastroCaronaActivity.carona;
 
-		JSONStringer vm = null;
-
+		ObjectMapper mapper = new ObjectMapper();
+		StringWriter stringWriter = new StringWriter();
 		try {
-			vm = new JSONStringer().object()
-					.key("nome")
-					.value(cadastroCaronaActivity.carona.getNome())
-					.key("motoristaFacebookId")
-					.value(cadastroCaronaActivity.carona.getMotoristaFacebookId())
-					.key("origem")
-					.value(cadastroCaronaActivity.carona.getOrigem())
-					.key("destino")
-					.value(cadastroCaronaActivity.carona.getDestino())
-					.key("data")
-					.value(cadastroCaronaActivity.carona.getData().getTime())
-					.key("telefone")
-					.value(cadastroCaronaActivity.carona.getTelefone())
-					.endObject();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			mapper.writeValue(stringWriter, carona);
+		} catch (Exception e) {
+			Log.e(null, "Erro ao gerar JSON.", e);
 		}
 
-		return HttpUtil.doPOST(url, vm.toString());
-
+		return HttpUtil.doPOST(url, stringWriter.toString());
 	}
 
 	@Override

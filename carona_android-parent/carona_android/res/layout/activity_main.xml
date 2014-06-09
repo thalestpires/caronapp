@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFFFF"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@color/cinza" 
+    android:gravity="center" >
 
     <Switch
         android:id="@+id/switchAmigos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/motoristasConhecidos" />
+        android:text="@string/motoristasConhecidos" 
+        android:textColor="#6D787A"/>
 
     <ListView
         android:id="@android:id/list"

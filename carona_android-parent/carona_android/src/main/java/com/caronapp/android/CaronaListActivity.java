@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.content.ContentProviderOperation;
 import android.content.Intent;
 import android.content.OperationApplicationException;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,7 +40,8 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		carregaFontes();
+		
 		Switch switchFiltraAmigos = (Switch) findViewById(R.id.switchAmigos);
 		switchFiltraAmigos.setOnCheckedChangeListener(this);
 
@@ -142,5 +144,13 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 			Toast.makeText(this, R.string.disponivelBreve, Toast.LENGTH_SHORT).show();
 		}
 
+	}
+	private void carregaFontes(){
+		//TODO ver como carrego uma fonte para toda activity
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/Helvetica.ttf");
+        TextView tv = (TextView) findViewById(R.id.switchAmigos);
+        tv.setTypeface(tf);
+        
 	}
 }

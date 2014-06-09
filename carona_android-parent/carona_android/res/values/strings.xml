@@ -15,4 +15,5 @@
 	<string name="disponivelBreve">"Disponível em breve"</string>
 	<string name="carregando">"Carregando.."</string>
 	<string name="sucesso_cadastro_carona">"Carona cadastrada com sucesso!"</string>
+	<color name="cinza">#F2F2F2</color>
 </resources>
