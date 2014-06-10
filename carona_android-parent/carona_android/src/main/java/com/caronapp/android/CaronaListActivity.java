@@ -58,11 +58,12 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 		this.getListView().setLongClickable(true);
 		this.getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-				
+				boolean precisouAdicionarContato = false;
 				final String nome = getCaronas().get(position).getNome();
 				final String telefone = getCaronas().get(position).getTelefone();
 				if(!AndroidUtil.contactExists(getApplicationContext(), telefone)){
-					adicionarContato(nome, telefone);  					
+					adicionarContato(nome, telefone);
+					precisouAdicionarContato = true;
 				}
 				Handler delayHandler= new Handler();
 				Runnable r = new Runnable()
@@ -75,9 +76,13 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 					}
 				};
 				
-				showLoadingToast();
 				
-				delayHandler.postDelayed(r, 5000);
+				int delay = 0;
+				if(precisouAdicionarContato){
+					delay = 5000;
+					showLoadingToast();
+				} 
+				delayHandler.postDelayed(r, delay);
 
 				return true;
 			}
