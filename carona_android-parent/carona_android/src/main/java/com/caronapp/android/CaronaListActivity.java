@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.caronapp.model.Carona;
+import com.caronapp.util.AndroidUtil;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.MapBuilder;
 
@@ -60,9 +61,9 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 				
 				final String nome = getCaronas().get(position).getNome();
 				final String telefone = getCaronas().get(position).getTelefone();
-				
-				adicionarContato(nome, telefone);  
-
+				if(!AndroidUtil.contactExists(getApplicationContext(), telefone)){
+					adicionarContato(nome, telefone);  					
+				}
 				Handler delayHandler= new Handler();
 				Runnable r = new Runnable()
 				{
