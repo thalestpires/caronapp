@@ -32,7 +32,7 @@ public class HttpUtil {
 		String resposta = null;
 		StringEntity entity;
 		try {
-			entity = new StringEntity(json);
+			entity = new StringEntity(json, "UTF-8");
 			HttpPost request = new HttpPost(url);
 			request.setHeader("Accept", "application/json");
 			request.setHeader("Content-type", "application/json");
