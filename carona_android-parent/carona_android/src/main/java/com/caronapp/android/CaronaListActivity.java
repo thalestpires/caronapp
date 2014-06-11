@@ -18,6 +18,7 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Contacts.Data;
 import android.provider.ContactsContract.RawContacts;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.CompoundButton;
@@ -45,8 +46,8 @@ public class CaronaListActivity extends ListActivity implements OnCheckedChangeL
 		
 		Switch switchFiltraAmigos = (Switch) findViewById(R.id.switchAmigos);
 		switchFiltraAmigos.setOnCheckedChangeListener(this);
-
-		new FetchCaronasTask(this).execute();
+		View rootView = findViewById(android.R.id.content);
+		new FetchCaronasTask(this, rootView).execute();
 	}
 
 	public void updateCaronas(List<Carona> caronas){

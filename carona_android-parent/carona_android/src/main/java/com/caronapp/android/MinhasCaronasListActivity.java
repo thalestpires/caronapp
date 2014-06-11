@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +21,15 @@ public class MinhasCaronasListActivity extends ListActivity {
 	TextView content;
 
 	List<Carona> caronas;
-
+	
+	View rootView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_minhas_caronas);
-
-		new FetchMinhasCaronasTask(this).execute();
+		rootView = findViewById(android.R.id.content);
+		new FetchMinhasCaronasTask(this, rootView).execute();
 	}
 
 	public void updateCaronas(List<Carona> caronas) {
@@ -88,7 +89,7 @@ public class MinhasCaronasListActivity extends ListActivity {
     protected void onResume() {
     	super.onResume();
     	updateCaronas(new ArrayList<Carona>());
-		new FetchMinhasCaronasTask(this).execute();
+		new FetchMinhasCaronasTask(this, rootView).execute();
     }
     
 }

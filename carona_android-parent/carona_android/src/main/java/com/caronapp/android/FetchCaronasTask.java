@@ -5,6 +5,8 @@ import java.util.List;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.caronapp.model.Carona;
 import com.caronapp.util.HttpUtil;
@@ -21,15 +23,20 @@ class FetchCaronasTask extends AsyncTask<String, String, String> {
 
 	private final CaronaListActivity caronaListActivity;
 	private final Context mContext;
-
-	protected FetchCaronasTask(CaronaListActivity caronaActivity) {
+	private View rootView;
+	private LinearLayout linlaHeaderProgress;
+	protected FetchCaronasTask(CaronaListActivity caronaActivity, View rootView) {
 		this.caronaListActivity = caronaActivity;
 		this.mContext = caronaActivity;
+		this.rootView = rootView;
+		this.linlaHeaderProgress = (LinearLayout) rootView.findViewById(R.id.linlaHeaderProgress);
 	}
+
 
 	@Override
 	protected void onPreExecute() {
-
+		 // SHOW THE SPINNER WHILE LOADING FEEDS
+	    linlaHeaderProgress.setVisibility(View.VISIBLE);
 	}
 
 	@Override
@@ -40,7 +47,8 @@ class FetchCaronasTask extends AsyncTask<String, String, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-
+		  // HIDE THE SPINNER AFTER LOADING FEEDS
+	    linlaHeaderProgress.setVisibility(View.GONE);
 		List<Carona> caronas = gson.fromJson(result, caronasListType);
 
 		caronaListActivity.updateCaronas(caronas);
